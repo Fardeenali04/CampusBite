@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from app.routes.auth import router as auth_router
+from app.routes.restaurants import router as restaurant_router
 
 app = FastAPI(
     title="CampusBite API",
@@ -14,6 +16,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(auth_router)
+app.include_router(restaurant_router)
 
 @app.get("/")
 def home():

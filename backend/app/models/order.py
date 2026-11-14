@@ -1,6 +1,11 @@
 
 from datetime import datetime, timezone
 from decimal import Decimal
+from sqlalchemy.orm import Mapped, mapped_column, relationship
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from app.models.order_item import OrderItem
 
 from sqlalchemy import (
     String,
@@ -70,4 +75,9 @@ class Order(Base):
         default=lambda: datetime.now(timezone.utc),
         onupdate=lambda: datetime.now(timezone.utc),
         nullable=False
+    )
+
+    items: Mapped[list["OrderItem"]] = relationship(
+    "OrderItem",
+    cascade="all, delete-orphan"
     )

@@ -1,5 +1,5 @@
 
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status , Query
 from sqlalchemy.orm import Session
 
 from app.core.database import get_db
@@ -102,5 +102,46 @@ def update_my_restaurant(
 
     db.commit()
     db.refresh(restaurant)
+
+    return restaurant
+
+
+
+# Browse available restaurants (Public)
+@router.get("/", response_model=list[RestaurantResponse])
+def get_restaurants(
+    search: str | None = None,
+    skip: int = Query(default=0, ge=0),
+    limit: int = Query(default=10, ge=1, le=100),
+    db: Session = Depends(get_db)
+):
+    query = db.query(Restaurant).filter(
+        Restaurant.is_available == True
+    )
+
+    if search:
+        query = query.filter(
+            Restaurant.name.ilike(f"%{search}%")
+        )
+
+    return query.offset(skip).limit(limit).all()
+
+
+# Get restaurant details (Public)
+@router.get("/{restaurant_id}", response_model=RestaurantResponse)
+def get_restaurant(
+    restaurant_id: int,
+    db: Session = Depends(get_db)
+):
+    restaurant = db.query(Restaurant).filter(
+        Restaurant.id == restaurant_id,
+        Restaurant.is_available == True
+    ).first()
+
+    if not restaurant:
+        raise HTTPException(
+            status_code=404,
+            detail="Restaurant not found or unavailable"
+        )
 
     return restaurant

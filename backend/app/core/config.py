@@ -1,5 +1,8 @@
-
+from pathlib import Path
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+
+BASE_DIR = Path(__file__).resolve().parents[3]
 
 
 class Settings(BaseSettings):
@@ -7,9 +10,11 @@ class Settings(BaseSettings):
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     DATABASE_URL: str
+    OPENAI_API_KEY: str | None = None
+    OPENAI_MODEL: str = "gpt-5.5"
 
     model_config = SettingsConfigDict(
-        env_file=".env",
+        env_file=BASE_DIR / ".env",
         env_file_encoding="utf-8",
         extra="ignore"
     )

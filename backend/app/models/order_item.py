@@ -1,8 +1,11 @@
 
 from decimal import Decimal
-
 from sqlalchemy import ForeignKey, Integer, Numeric, CheckConstraint
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from app.models.order import Order
 
 from app.core.database import Base
 
@@ -36,3 +39,5 @@ class OrderItem(Base):
     unit_price: Mapped[Decimal] = mapped_column(
         Numeric(10, 2), nullable=False
     )
+
+    order: Mapped["Order"] = relationship("Order", back_populates="items")

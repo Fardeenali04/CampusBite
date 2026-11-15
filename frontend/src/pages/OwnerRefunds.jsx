@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { apiRequest } from "../services/api";
 import { useAuth } from "../context/AuthContext";
+import BrandLogo from "../components/BrandLogo";
 import "./OwnerRefunds.css";
 
 export default function OwnerRefunds() {
@@ -63,10 +64,10 @@ export default function OwnerRefunds() {
   return (
     <div className="owner-refunds-page">
       <header className="owner-refunds-topbar">
-        <Link to="/dashboard" className="owner-refunds-brand">
-          <span className="owner-refunds-mark">C</span>
-          CampusBite <span>OWNER</span>
-        </Link>
+        <div className="owner-refunds-brand-wrapper">
+          <BrandLogo />
+          <span className="owner-refunds-owner-tag">OWNER</span>
+        </div>
 
         <div>
           <span>{user?.full_name}</span>

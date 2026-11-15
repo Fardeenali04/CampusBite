@@ -1,6 +1,8 @@
+
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { apiRequest } from "../services/api";
+import BrandLogo from "../components/BrandLogo";
 import "./Customer.css";
 
 export default function Restaurants() {
@@ -44,16 +46,20 @@ export default function Restaurants() {
 
   return (
     <main className="customer-page">
+      <div className="customer-topbar">
+        <BrandLogo />
+
+        <Link to="/cart" className="cart-link">
+          View Cart
+        </Link>
+      </div>
+
       <div className="customer-heading">
         <div>
           <p className="eyebrow">CAMPUSBITE</p>
           <h1>Discover restaurants</h1>
           <p>Find something delicious around your campus.</p>
         </div>
-
-        <Link to="/cart" className="cart-link">
-          View Cart
-        </Link>
       </div>
 
       <input

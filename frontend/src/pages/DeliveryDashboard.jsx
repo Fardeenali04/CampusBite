@@ -1,7 +1,8 @@
 
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { apiRequest } from "../services/api";
+import BrandLogo from "../components/BrandLogo";
 import "./DeliveryDashboard.css";
 
 export default function DeliveryDashboard() {
@@ -61,6 +62,10 @@ export default function DeliveryDashboard() {
 
   return (
     <main className="delivery-page">
+      <div className="delivery-topbar">
+        <BrandLogo />
+      </div>
+
       <header className="delivery-header">
         <div>
           <p className="delivery-eyebrow">CAMPUSBITE DELIVERY</p>
@@ -78,18 +83,18 @@ export default function DeliveryDashboard() {
       </header>
 
       <nav className="delivery-tabs">
-        <a
-          href="/delivery/orders"
+        <Link
+          to="/delivery/orders"
           className={!isHistory ? "active" : ""}
         >
           Assigned Deliveries
-        </a>
-        <a
-          href="/delivery/history"
+        </Link>
+        <Link
+          to="/delivery/history"
           className={isHistory ? "active" : ""}
         >
           Delivery History
-        </a>
+        </Link>
       </nav>
 
       {error && <div className="delivery-error">{error}</div>}

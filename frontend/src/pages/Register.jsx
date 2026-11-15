@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import BrandLogo from "../components/BrandLogo";
 
 export default function Register() {
   const { register } = useAuth();
@@ -41,10 +42,7 @@ export default function Register() {
   return (
     <main className="auth-page">
       <section className="auth-card">
-        <Link to="/" className="brand">
-          <span className="brand-mark">C</span>
-          CampusBite
-        </Link>
+        <BrandLogo />
 
         <p className="eyebrow">JOIN CAMPUSBITE</p>
         <h1>Create your account</h1>

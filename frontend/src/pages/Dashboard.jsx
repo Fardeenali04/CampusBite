@@ -1,6 +1,7 @@
 
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import BrandLogo from "../components/BrandLogo";
 
 const dashboardContent = {
   CUSTOMER: {
@@ -39,10 +40,7 @@ export default function Dashboard() {
   return (
     <div className="dashboard-page">
       <header className="topbar">
-        <Link to="/dashboard" className="brand">
-          <span className="brand-mark">C</span>
-          CampusBite
-        </Link>
+        <BrandLogo />
 
         <div className="topbar-right">
           <span>{user?.full_name}</span>

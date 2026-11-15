@@ -1,12 +1,20 @@
+
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { apiRequest } from "../services/api";
 import { useCart } from "../context/CartContext";
+import BrandLogo from "../components/BrandLogo";
 import "./Customer.css";
 
 export default function RestaurantMenu() {
   const { restaurantId } = useParams();
-  const { addToCart, itemCount } = useCart();
+
+  const {
+    addToCart,
+    cartItems,
+    itemCount,
+    updateQuantity,
+  } = useCart();
 
   const [restaurant, setRestaurant] = useState(null);
   const [menuItems, setMenuItems] = useState([]);
@@ -68,18 +76,29 @@ export default function RestaurantMenu() {
 
   function handleAdd(item) {
     const result = addToCart(item, restaurant);
+
     setMessage(
       result.success ? `${item.name} added to cart.` : result.message
     );
   }
 
   if (loading) {
-    return <main className="customer-page">Loading restaurant menu...</main>;
+    return (
+      <main className="customer-page">
+        <div className="customer-topbar">
+          <BrandLogo />
+        </div>
+        Loading restaurant menu...
+      </main>
+    );
   }
 
   if (error) {
     return (
       <main className="customer-page">
+        <div className="customer-topbar">
+          <BrandLogo />
+        </div>
         <p className="customer-error">{error}</p>
         <Link to="/restaurants">Back to restaurants</Link>
       </main>
@@ -88,20 +107,25 @@ export default function RestaurantMenu() {
 
   return (
     <main className="customer-page">
+      <div className="customer-topbar">
+        <BrandLogo />
+
+        <Link to="/cart" className="cart-link">
+          Cart ({itemCount})
+        </Link>
+      </div>
+
       <div className="customer-heading">
         <div>
           <Link to="/restaurants" className="back-link">
             ← All restaurants
           </Link>
+
           <p className="eyebrow">RESTAURANT MENU</p>
           <h1>{restaurant?.name}</h1>
           <p>{restaurant?.description}</p>
           <small>{restaurant?.address}</small>
         </div>
-
-        <Link to="/cart" className="cart-link">
-          Cart ({itemCount})
-        </Link>
       </div>
 
       {!restaurant?.is_available && (
@@ -139,35 +163,72 @@ export default function RestaurantMenu() {
         <p className="customer-message">No dishes found.</p>
       ) : (
         <div className="menu-grid">
-          {filteredItems.map((item) => (
-            <article className="menu-card" key={item.id}>
-              {item.image_url ? (
-                <img src={item.image_url} alt={item.name} />
-              ) : (
-                <div className="menu-placeholder">🍛</div>
-              )}
+          {filteredItems.map((item) => {
+            const cartItem = cartItems.find(
+              (cartItem) => cartItem.id === item.id
+            );
 
-              <div className="menu-card-content">
-                <div className="menu-card-title">
-                  <h2>{item.name}</h2>
-                  <span className="food-type">
-                    {item.is_vegetarian ? "🟢 Veg" : "🔴 Non-veg"}
-                  </span>
+            const quantity = cartItem?.quantity || 0;
+
+            return (
+              <article className="menu-card" key={item.id}>
+                {item.image_url ? (
+                  <img src={item.image_url} alt={item.name} />
+                ) : (
+                  <div className="menu-placeholder">🍛</div>
+                )}
+
+                <div className="menu-card-content">
+                  <div className="menu-card-title">
+                    <h2>{item.name}</h2>
+
+                    <span className="food-type">
+                      {item.is_vegetarian ? "🟢 Veg" : "🔴 Non-veg"}
+                    </span>
+                  </div>
+
+                  <p>{item.description || item.category}</p>
+
+                  <strong>₹{Number(item.price).toFixed(2)}</strong>
+
+                  {!item.is_available || !restaurant?.is_available ? (
+                    <button className="primary-button" disabled>
+                      Unavailable
+                    </button>
+                  ) : quantity === 0 ? (
+                    <button
+                      className="primary-button"
+                      onClick={() => handleAdd(item)}
+                    >
+                      Add to Cart
+                    </button>
+                  ) : (
+                    <div className="menu-quantity-controls">
+                      <button
+                        onClick={() =>
+                          updateQuantity(item.id, quantity - 1)
+                        }
+                        aria-label={`Decrease ${item.name} quantity`}
+                      >
+                        −
+                      </button>
+
+                      <span>{quantity}</span>
+
+                      <button
+                        onClick={() =>
+                          updateQuantity(item.id, quantity + 1)
+                        }
+                        aria-label={`Increase ${item.name} quantity`}
+                      >
+                        +
+                      </button>
+                    </div>
+                  )}
                 </div>
-
-                <p>{item.description || item.category}</p>
-                <strong>₹{Number(item.price).toFixed(2)}</strong>
-
-                <button
-                  className="primary-button"
-                  disabled={!item.is_available || !restaurant?.is_available}
-                  onClick={() => handleAdd(item)}
-                >
-                  {item.is_available ? "Add to Cart" : "Unavailable"}
-                </button>
-              </div>
-            </article>
-          ))}
+              </article>
+            );
+          })}
         </div>
       )}
     </main>

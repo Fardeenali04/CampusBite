@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { apiRequest } from "../services/api";
 import { useCart } from "../context/CartContext";
+import BrandLogo from "../components/BrandLogo";
 import "./Customer.css";
 
 export default function Checkout() {
@@ -66,6 +67,10 @@ export default function Checkout() {
   if (cartItems.length === 0) {
     return (
       <main className="customer-page">
+        <div className="customer-topbar">
+          <BrandLogo />
+        </div>
+
         <h1>Your cart is empty</h1>
         <Link to="/restaurants" className="primary-link">
           Browse Restaurants
@@ -76,15 +81,20 @@ export default function Checkout() {
 
   return (
     <main className="customer-page">
+      <div className="customer-topbar">
+        <BrandLogo />
+
+        <Link to="/cart" className="cart-link">
+          Back to Cart
+        </Link>
+      </div>
+
       <div className="customer-heading">
         <div>
           <p className="eyebrow">CAMPUSBITE CHECKOUT</p>
           <h1>Complete your order</h1>
           <p>Ordering from {cartItems[0].restaurantName}</p>
         </div>
-        <Link to="/cart" className="cart-link">
-          Back to Cart
-        </Link>
       </div>
 
       <div className="checkout-layout">
@@ -130,7 +140,9 @@ export default function Checkout() {
 
           {cartItems.map((item) => (
             <div className="checkout-item" key={item.id}>
-              <span>{item.name} × {item.quantity}</span>
+              <span>
+                {item.name} × {item.quantity}
+              </span>
               <strong>
                 ₹{(item.price * item.quantity).toFixed(2)}
               </strong>

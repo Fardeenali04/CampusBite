@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { apiRequest } from "../services/api";
 import "./Customer.css";
+import BrandLogo from "../components/BrandLogo";
 
 const statusLabels = {
   PLACED: "Order Placed",
@@ -150,21 +151,31 @@ export default function MyOrders() {
   }
 
   if (loading) {
-    return <main className="customer-page">Loading your orders...</main>;
+    return (
+      <main className="customer-page">
+        <div className="customer-topbar">
+          <BrandLogo />
+        </div>
+        Loading your orders...
+      </main>
+    );
   }
 
   return (
     <main className="customer-page">
+      <div className="customer-topbar">
+        <BrandLogo />
+        <Link to="/restaurants" className="cart-link">
+          Order Again
+        </Link>
+      </div>
+
       <div className="customer-heading">
         <div>
           <p className="eyebrow">CAMPUSBITE</p>
           <h1>My Orders</h1>
           <p>View your orders and track their progress.</p>
         </div>
-
-        <Link to="/restaurants" className="cart-link">
-          Order Again
-        </Link>
       </div>
 
       {error && <p className="customer-error">{error}</p>}

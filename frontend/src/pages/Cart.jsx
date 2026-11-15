@@ -1,6 +1,7 @@
 
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import BrandLogo from "../components/BrandLogo";
 import "./Customer.css";
 
 export default function Cart() {
@@ -17,16 +18,20 @@ export default function Cart() {
 
   return (
     <main className="customer-page">
+      <div className="customer-topbar">
+        <BrandLogo />
+
+        <Link to="/restaurants" className="cart-link">
+          Continue Shopping
+        </Link>
+      </div>
+
       <div className="customer-heading">
         <div>
           <p className="eyebrow">CAMPUSBITE</p>
           <h1>Your Cart</h1>
           <p>{itemCount} item(s) in your cart</p>
         </div>
-
-        <Link to="/restaurants" className="cart-link">
-          Continue Shopping
-        </Link>
       </div>
 
       {cartItems.length === 0 ? (

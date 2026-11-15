@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import BrandLogo from "../components/BrandLogo";
 
 export default function Login() {
   const { login } = useAuth();
@@ -30,10 +31,7 @@ export default function Login() {
   return (
     <main className="auth-page">
       <section className="auth-card">
-        <Link to="/" className="brand">
-          <span className="brand-mark">C</span>
-          CampusBite
-        </Link>
+        <BrandLogo />
 
         <p className="eyebrow">WELCOME BACK</p>
         <h1>Sign in to your account</h1>

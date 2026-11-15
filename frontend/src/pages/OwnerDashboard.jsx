@@ -4,6 +4,8 @@ import { Link, useLocation } from "react-router-dom";
 import { apiRequest } from "../services/api";
 import { useAuth } from "../context/AuthContext";
 import "./OwnerDashboard.css";
+import BrandLogo from "../components/BrandLogo";
+
 
 const API = {
   menu: "/owner-tools/menu",
@@ -234,10 +236,10 @@ export default function OwnerDashboard() {
   return (
     <div className="owner-page">
       <header className="owner-topbar">
-        <Link to="/dashboard" className="owner-brand">
-          <span className="owner-brand-mark">C</span>
-          CampusBite <span className="owner-tag">OWNER</span>
-        </Link>
+        <div className="owner-brand-wrapper">
+          <BrandLogo />
+          <span className="owner-tag">OWNER</span>
+        </div>
 
         <div className="owner-user">
           <span>{user?.full_name}</span>

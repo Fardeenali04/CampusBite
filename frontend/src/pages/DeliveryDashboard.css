@@ -1,4 +1,3 @@
-
 .delivery-page {
   width: min(1100px, 92%);
   margin: 40px auto;
@@ -235,4 +234,17 @@
   .delivery-card {
     padding: 17px;
   }
+}
+
+.delivery-topbar {
+  display: flex;
+  align-items: center;
+  min-height: 75px;
+  margin-bottom: 25px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #e8eae4;
+}
+
+.delivery-topbar .brand {
+  color: inherit;
 }

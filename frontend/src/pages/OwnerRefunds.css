@@ -1,4 +1,3 @@
-
 .owner-refunds-page {
   min-height: 100vh;
   background: #f7f8fb;
@@ -41,7 +40,7 @@
   letter-spacing: 1px;
 }
 
-.owner-refunds-topbar > div {
+.owner-refunds-topbar>div {
   display: flex;
   align-items: center;
   gap: 16px;
@@ -242,11 +241,11 @@
     padding: 12px 5%;
   }
 
-  .owner-refunds-topbar > div {
+  .owner-refunds-topbar>div {
     gap: 8px;
   }
 
-  .owner-refunds-topbar > div span {
+  .owner-refunds-topbar>div span {
     display: none;
   }
 
@@ -261,4 +260,22 @@
   .owner-refund-actions button {
     width: 100%;
   }
+}
+
+.owner-refunds-brand-wrapper,
+.owner-brand-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.owner-refunds-brand-wrapper .brand,
+.owner-brand-wrapper .brand {
+  text-decoration: none;
+}
+
+.owner-refunds-owner-tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
 }

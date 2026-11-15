@@ -14,6 +14,7 @@ import MyOrders from "./pages/MyOrders";
 import OwnerDashboard from "./pages/OwnerDashboard";
 import OwnerRefunds from "./pages/OwnerRefunds";
 import DeliveryDashboard from "./pages/DeliveryDashboard";
+import AIInsights from "./pages/AIInsights";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 import GuestRoute from "./components/GuestRoute";
@@ -29,6 +30,15 @@ function App() {
       <Route
         path="/dashboard"
         element={<ProtectedRoute><Dashboard /></ProtectedRoute>}
+      />
+
+      <Route
+        path="/insights"
+        element={
+          <ProtectedRoute allowedRoles={["CUSTOMER"]}>
+            <AIInsights />
+          </ProtectedRoute>
+        }
       />
 
       <Route path="/restaurants" element={

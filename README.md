@@ -159,11 +159,30 @@ DELIVERED
 
 Additional outcomes include CANCELLED and REFUNDED.
 
+
 ## AI Order Insights
 
-The customer insights feature analyzes the authenticated customer's order history and provides spending, order-status, and popular-item insights.
+CampusBite uses the official OpenAI API to generate personalized insights from the authenticated customer's order history.
 
-OpenAI API usage requires a valid API key and available API billing credits. Local history-based insights are available as a fallback.
+The feature can answer questions about:
+- Total spending and refunded amounts
+- Frequently ordered dishes
+- Active and completed orders
+- Order history and purchasing patterns
+
+### OpenAI API Configuration
+
+A valid OpenAI API key is required.
+
+Add the following to the root `.env` file:
+
+OPENAI_API_KEY=your_openai_api_key
+OPENAI_MODEL=gpt-5.5
+
+The API key is used exclusively by the backend and must never be committed to GitHub.
+
+Each evaluator can configure their own API key.
+
 
 ## Security
 

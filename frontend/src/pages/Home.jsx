@@ -12,7 +12,8 @@ export default function Home() {
     CUSTOMER: {
       label: "CUSTOMER",
       title: "Your favourite food is just a few clicks away.",
-      description: "Explore campus restaurants, discover delicious dishes and track your orders.",
+      description:
+        "Explore campus restaurants, discover delicious dishes and track your orders.",
       primary: "Browse Restaurants",
       primaryLink: "/restaurants",
       secondary: "My Orders",
@@ -21,7 +22,8 @@ export default function Home() {
     OWNER: {
       label: "RESTAURANT OWNER",
       title: "Manage your restaurant with CampusBite.",
-      description: "Manage your menu, process incoming orders and keep your restaurant running smoothly.",
+      description:
+        "Manage your menu, process incoming orders and keep your restaurant running smoothly.",
       primary: "Owner Dashboard",
       primaryLink: "/owner/menu",
       secondary: "Manage Orders",
@@ -30,7 +32,8 @@ export default function Home() {
     DELIVERY_PARTNER: {
       label: "DELIVERY PARTNER",
       title: "Ready for your next delivery?",
-      description: "View assigned deliveries, update delivery statuses and track your completed orders.",
+      description:
+        "View assigned deliveries, update delivery statuses and track your completed orders.",
       primary: "Assigned Deliveries",
       primaryLink: "/delivery/orders",
       secondary: "Delivery History",
@@ -98,6 +101,12 @@ export default function Home() {
                 <Link to={details.secondaryLink} className="secondary-button">
                   {details.secondary}
                 </Link>
+
+                {role === "CUSTOMER" && (
+                  <Link to="/insights" className="secondary-button">
+                    ✨ AI Order Insights
+                  </Link>
+                )}
               </div>
 
               <p className="hero-note">
@@ -107,7 +116,9 @@ export default function Home() {
           ) : user ? (
             <>
               <p className="eyebrow">CAMPUSBITE</p>
+
               <h1>Welcome back, {user.full_name}!</h1>
+
               <p className="muted">
                 Access your CampusBite dashboard to continue.
               </p>

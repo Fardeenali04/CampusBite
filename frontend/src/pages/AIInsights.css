@@ -1,0 +1,164 @@
+
+.ai-page {
+  min-height: 100vh;
+  background: #f7f8f5;
+  padding: 0 24px 60px;
+}
+
+.ai-topbar {
+  max-width: 1100px;
+  margin: auto;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ai-back-link {
+  text-decoration: none;
+  color: #286b45;
+  font-weight: 600;
+}
+
+.ai-container {
+  max-width: 760px;
+  margin: 55px auto;
+}
+
+.ai-heading {
+  margin-bottom: 32px;
+}
+
+.ai-eyebrow {
+  color: #388653;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.ai-heading h1 {
+  font-size: 36px;
+  margin: 12px 0;
+  color: #1d2b22;
+}
+
+.ai-heading p {
+  color: #68746b;
+  line-height: 1.7;
+}
+
+.ai-form,
+.ai-answer {
+  background: white;
+  padding: 28px;
+  border-radius: 14px;
+  border: 1px solid #e5e9e4;
+  margin-bottom: 22px;
+}
+
+.ai-form label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.ai-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  resize: vertical;
+  padding: 14px;
+  border: 1px solid #dce2dc;
+  border-radius: 9px;
+  font: inherit;
+  outline: none;
+}
+
+.ai-form textarea:focus {
+  border-color: #388653;
+}
+
+.ai-form button {
+  margin-top: 16px;
+  padding: 13px 22px;
+  border: none;
+  border-radius: 8px;
+  background: #286b45;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.ai-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.ai-error {
+  padding: 16px;
+  margin-bottom: 22px;
+  background: #fff0f0;
+  border: 1px solid #f0caca;
+  color: #a52d2d;
+  border-radius: 9px;
+  line-height: 1.6;
+}
+
+.ai-answer h2 {
+  margin-top: 0;
+  color: #286b45;
+}
+
+.ai-answer-text {
+  white-space: pre-wrap;
+  line-height: 1.8;
+  color: #344238;
+}
+
+.ai-meta {
+  display: block;
+  margin-top: 18px;
+  color: #89938b;
+  font-size: 13px;
+}
+
+.ai-suggestions {
+  margin-top: 30px;
+}
+
+.ai-suggestions h3 {
+  color: #344238;
+}
+
+.ai-suggestions button {
+  display: inline-block;
+  margin: 6px 8px 6px 0;
+  padding: 10px 14px;
+  border: 1px solid #dce5dc;
+  border-radius: 20px;
+  background: white;
+  color: #286b45;
+  cursor: pointer;
+}
+
+.ai-suggestions button:hover {
+  background: #edf5ee;
+}
+
+@media (max-width: 600px) {
+  .ai-page {
+    padding: 0 16px 40px;
+  }
+
+  .ai-container {
+    margin-top: 35px;
+  }
+
+  .ai-heading h1 {
+    font-size: 28px;
+  }
+
+  .ai-form,
+  .ai-answer {
+    padding: 20px;
+  }
+}

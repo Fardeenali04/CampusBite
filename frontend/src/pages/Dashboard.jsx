@@ -19,6 +19,7 @@ const dashboardContent = {
       ["Manage Menu", "/owner/menu"],
       ["Manage Orders", "/owner/orders"],
       ["Reminders", "/owner/reminders"],
+      ["Refund Management", "/owner/refunds"],
     ],
   },
   DELIVERY_PARTNER: {
@@ -33,7 +34,6 @@ const dashboardContent = {
 
 export default function Dashboard() {
   const { user, logout } = useAuth();
-
   const content = dashboardContent[user?.role];
 
   return (

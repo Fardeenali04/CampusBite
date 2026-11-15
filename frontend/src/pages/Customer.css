@@ -1,0 +1,209 @@
+
+/* My Orders */
+
+.orders-list {
+  display: grid;
+  gap: 20px;
+}
+
+.order-card {
+  background: white;
+  border: 1px solid #e9ebef;
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.035);
+}
+
+.order-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.order-card-header h2 {
+  margin: 5px 0;
+  font-size: 1.1rem;
+}
+
+.order-status {
+  padding: 7px 12px;
+  border-radius: 20px;
+  background: #fff3df;
+  color: #9a6100;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.status-delivered {
+  background: #e7f7ed;
+  color: #16834a;
+}
+
+.status-cancelled,
+.status-refunded {
+  background: #fff0f0;
+  color: #c43b3b;
+}
+
+.status-out_for_delivery,
+.status-assigned {
+  background: #eaf2ff;
+  color: #285ca8;
+}
+
+.status-preparing,
+.status-accepted,
+.status-ready {
+  background: #fff3df;
+  color: #9a6100;
+}
+
+.order-items {
+  display: grid;
+  gap: 12px;
+  padding: 15px 0;
+  border-top: 1px solid #e9ebef;
+  border-bottom: 1px solid #e9ebef;
+}
+
+.order-item-row,
+.order-details > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.order-item-row span,
+.order-details span,
+.order-progress span {
+  color: #737984;
+}
+
+.order-details {
+  display: grid;
+  gap: 15px;
+  padding: 18px 0;
+}
+
+.order-details strong {
+  text-align: right;
+  max-width: 65%;
+  overflow-wrap: anywhere;
+}
+
+.order-progress {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 13px;
+  background: #f6f7f8;
+  border-radius: 8px;
+}
+
+.cancel-order-button {
+  margin-top: 18px;
+  padding: 10px 16px;
+  border: 1px solid #e5b6b6;
+  border-radius: 8px;
+  background: white;
+  color: #c43b3b;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cancel-order-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .order-details > div,
+  .order-progress {
+    flex-direction: column;
+  }
+
+  .order-details strong {
+    text-align: left;
+    max-width: 100%;
+  }
+}
+
+
+.customer-success {
+  color: #187443;
+  background: #e9f8ef;
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin: 12px 0;
+}
+
+.order-feedback {
+  border-top: 1px solid #e8eaf0;
+  margin-top: 20px;
+  padding-top: 18px;
+}
+
+.order-feedback h3 {
+  margin: 0 0 14px;
+  font-size: 17px;
+}
+
+.feedback-form,
+.refund-form {
+  display: grid;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.feedback-form label {
+  display: grid;
+  gap: 7px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.feedback-form select,
+.feedback-form textarea,
+.refund-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 12px;
+  border: 1px solid #d8dce5;
+  border-radius: 8px;
+  font: inherit;
+  background: #fff;
+  color: #172033;
+}
+
+.feedback-button {
+  justify-self: start;
+  border: 0;
+  border-radius: 8px;
+  padding: 11px 16px;
+  background: #e87532;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.feedback-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.refund-form {
+  border-top: 1px solid #e8eaf0;
+  padding-top: 16px;
+  margin-top: 20px;
+}
+
+.refund-form h3 {
+  margin-bottom: 0;
+}
+
+.refund-button {
+  background: #475569;
+}

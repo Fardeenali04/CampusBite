@@ -1,0 +1,264 @@
+
+.owner-refunds-page {
+  min-height: 100vh;
+  background: #f7f8fb;
+  color: #172033;
+}
+
+.owner-refunds-topbar {
+  min-height: 68px;
+  padding: 0 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  border-bottom: 1px solid #e8eaf0;
+}
+
+.owner-refunds-brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #172033;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.owner-refunds-mark {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: #e87532;
+  color: white;
+}
+
+.owner-refunds-brand span:last-child {
+  color: #e87532;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.owner-refunds-topbar > div {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.owner-refunds-topbar button,
+.owner-refunds-toolbar button {
+  padding: 9px 14px;
+  border: 1px solid #dfe3eb;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.owner-refunds-content {
+  width: min(950px, 90%);
+  margin: 38px auto;
+}
+
+.owner-refunds-back {
+  color: #64748b;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.owner-refunds-eyebrow {
+  margin: 30px 0 7px;
+  color: #e87532;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+}
+
+.owner-refunds-content h1 {
+  margin: 0;
+  font-size: clamp(27px, 4vw, 36px);
+}
+
+.owner-refunds-subtitle {
+  color: #788195;
+  margin: 9px 0 24px;
+}
+
+.owner-refunds-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid #e5e8ef;
+  font-weight: 700;
+}
+
+.owner-refunds-list {
+  display: grid;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.owner-refund-card {
+  padding: 22px;
+  background: #fff;
+  border: 1px solid #e7eaf0;
+  border-radius: 13px;
+  box-shadow: 0 4px 14px rgba(20, 30, 50, 0.04);
+}
+
+.owner-refund-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #edf0f4;
+}
+
+.owner-refund-heading p {
+  color: #8991a1;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin: 0 0 5px;
+}
+
+.owner-refund-heading h2 {
+  margin: 0;
+  font-size: 21px;
+}
+
+.refund-status {
+  padding: 7px 11px;
+  border-radius: 20px;
+  background: #fff4df;
+  color: #98600d;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.refund-status.approved {
+  background: #e6f7ed;
+  color: #187443;
+}
+
+.refund-status.rejected {
+  background: #ffeded;
+  color: #b42318;
+}
+
+.owner-refund-details {
+  display: flex;
+  gap: 50px;
+  padding: 17px 0;
+}
+
+.owner-refund-details div,
+.owner-refund-reason {
+  display: grid;
+  gap: 5px;
+}
+
+.owner-refund-details span,
+.owner-refund-reason span {
+  color: #8991a1;
+  font-size: 12px;
+}
+
+.owner-refund-reason p {
+  margin: 5px 0;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.owner-refund-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.owner-refund-actions button {
+  padding: 10px 17px;
+  border: 0;
+  border-radius: 8px;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.owner-refund-actions button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.approve-refund {
+  background: #21834f;
+}
+
+.reject-refund {
+  background: #c43c3c;
+}
+
+.refund-reviewed {
+  color: #64748b;
+  font-size: 13px;
+  margin: 18px 0 0;
+}
+
+.owner-refunds-empty {
+  margin-top: 25px;
+  padding: 45px 20px;
+  text-align: center;
+  border: 1px dashed #d9dee8;
+  border-radius: 13px;
+  color: #788195;
+}
+
+.owner-refunds-empty h2 {
+  color: #172033;
+}
+
+.owner-refunds-alert {
+  margin-top: 15px;
+  padding: 12px 14px;
+  border-radius: 8px;
+}
+
+.owner-refunds-alert.error {
+  color: #b42318;
+  background: #ffeded;
+}
+
+.owner-refunds-alert.success {
+  color: #187443;
+  background: #e6f7ed;
+}
+
+@media (max-width: 600px) {
+  .owner-refunds-topbar {
+    padding: 12px 5%;
+  }
+
+  .owner-refunds-topbar > div {
+    gap: 8px;
+  }
+
+  .owner-refunds-topbar > div span {
+    display: none;
+  }
+
+  .owner-refund-details {
+    gap: 25px;
+  }
+
+  .owner-refund-actions {
+    flex-direction: column;
+  }
+
+  .owner-refund-actions button {
+    width: 100%;
+  }
+}

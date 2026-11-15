@@ -1,11 +1,17 @@
 
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
-export default function GuestRoute() {
+export default function GuestRoute({ children }) {
   const { user, loading } = useAuth();
 
-  if (loading) return <div className="loading-screen">Loading...</div>;
+  if (loading) {
+    return <div className="loading-screen">Loading...</div>;
+  }
 
-  return user ? <Navigate to="/dashboard" replace /> : <Outlet />;
+  if (user) {
+    return <Navigate to="/dashboard" replace />;
+  }
+
+  return children;
 }
